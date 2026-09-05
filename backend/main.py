@@ -95,3 +95,9 @@ students_db = [
 def getStudents():
   result = students_db
   return result
+
+@app.get("/student-view/{student_id}")
+def viewStudent(student_id: int):
+    for stu in students_db:
+       if stu["id"] == student_id:
+          return stu
