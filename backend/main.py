@@ -91,3 +91,7 @@ students_db = [
     }
 ]
 
+@app.get("/students_list")
+def getStudents():
+  result = students_db
+  return result
