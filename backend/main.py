@@ -3,6 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)  
 
 students_db = [
     {
@@ -101,3 +108,4 @@ def viewStudent(student_id: int):
     for stu in students_db:
        if stu["id"] == student_id:
           return stu
+    return {"message": 'kindly search for the valid student'}
