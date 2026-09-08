@@ -111,3 +111,13 @@ def viewStudent(student_id: int):
     return {"message": 'kindly search for the valid student'}
 
 #Ading the delete student Endpoint 
+
+@app.delete("/students/{student_id}")
+def delete_student(student_id: int):
+    for index, stu in enumerate(students_db):
+        if stu["id"] == student_id:
+            deleted_student = students_db.pop(index)
+            return { 
+                "message": f"Student with ID {student_id} deleted successfully",
+                "data": deleted_student,
+            }
