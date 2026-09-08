@@ -109,3 +109,5 @@ def viewStudent(student_id: int):
        if stu["id"] == student_id:
           return stu
     return {"message": 'kindly search for the valid student'}
+
+#Ading the delete student Endpoint 
