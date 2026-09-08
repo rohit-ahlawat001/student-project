@@ -1,3 +1,5 @@
+from http.client import HTTPException
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -117,7 +119,8 @@ def delete_student(student_id: int):
     for index, stu in enumerate(students_db):
         if stu["id"] == student_id:
             deleted_student = students_db.pop(index)
-            return { 
+            return {  
                 "message": f"Student with ID {student_id} deleted successfully",
                 "data": deleted_student,
             }
+    raise HTTPException(status_code=404, detail="Student not found")
