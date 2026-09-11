@@ -1,0 +1,56 @@
+{
+  "total_students": 14,
+  "total_fee_collected": 715000,
+  "total_pending_fee": 195000,
+  "fully_paid_students": 6,
+  "pending_paid_students": 8,
+  "course_breakdown": {
+    "MCA": 4,
+    "BCA": 4,
+    "BTech": 4,
+    "BBA": 2,
+    "MBA": 1
+  },
+  "recent_pending_payments": [
+    {
+      "id": 8,
+      "name": "Rohan Khanna",
+      "course": "BTech",
+      "semester": 8,
+      "pending_fee_amount": 5000,
+      "next_fee_date": "2026-09-15"
+    },
+    {
+      "id": 11,
+      "name": "Pooja Joshi",
+      "course": "MCA",
+      "semester": 4,
+      "pending_fee_amount": 10000,
+      "next_fee_date": "2026-09-30"
+    },
+    {
+      "id": 5,
+      "name": "Neha Gupta",
+      "course": "BCA",
+      "semester": 2,
+      "pending_fee_amount": 20000,
+      "next_fee_date": "2026-10-05"
+    },
+    {
+      "id": 1,
+      "name": "Riya Sharma",
+      "course": "MCA",
+      "semester": 3,
+      "pending_fee_amount": 15000,
+      "next_fee_date": "2026-10-15"
+    },
+    {
+      "id": 10,
+      "name": "Vikram Raj",
+      "course": "BCA",
+      "semester": 1,
+      "pending_fee_amount": 25000,
+      "next_fee_date": "2026-10-20"
+    }
+  ]
+}
