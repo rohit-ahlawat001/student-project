@@ -108,16 +108,5 @@
         "pending_fee_amount": 50000,
         "next_fee_date": "2026-11-15",
         "is_fee_fully_paid": false
-    },
-    {
-        "id": 14,
-        "name": "Siddharth Rao",
-        "course": "BBA",
-        "semester": 5,
-        "fee_paid_amount": 45000,
-        "fee_paid_date": "2026-07-22T16:45:00",
-        "pending_fee_amount": 0,
-        "next_fee_date": null,
-        "is_fee_fully_paid": true
     }
 ]
