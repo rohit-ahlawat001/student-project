@@ -1,16 +1,5 @@
 [
     {
-        "id": 4,
-        "name": "Karan Mehta",
-        "course": "BTech",
-        "semester": 4,
-        "fee_paid_amount": 80000,
-        "fee_paid_date": "2026-07-10T11:00:00",
-        "pending_fee_amount": 0,
-        "next_fee_date": null,
-        "is_fee_fully_paid": true
-    },
-    {
         "id": 5,
         "name": "Neha Gupta",
         "course": "BCA",
