@@ -76,3 +76,10 @@ def get_dashboard_data():
 
 class createStudent(BaseModel):
     name: str
+    course: str
+    semester: int
+    fee_paid_amount: float
+    fee_paid_date: date
+    pending_fee_amount: float
+    next_fee_date: date
+    is_fee_fully_paid: false
