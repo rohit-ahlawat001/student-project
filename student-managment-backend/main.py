@@ -80,6 +80,6 @@ class createStudent(BaseModel):
     semester: int
     fee_paid_amount: float
     fee_paid_date: date
-    pending_fee_amount: float
-    next_fee_date: date
-    is_fee_fully_paid: false
+    pending_fee_amount: float = 0.0
+    next_fee_date: Optional[date] = None
+    is_fee_fully_paid: bool =false
