@@ -83,4 +83,11 @@ class createStudent(BaseModel):
     fee_paid_date: date
     pending_fee_amount: float = 0.0
     next_fee_date: Optional[date] = None
-    is_fee_fully_paid: bool =false
+    is_fee_fully_paid: bool = false
+
+@app.post("/create_student")
+def studentCreate(student: createStudent):
+    return{
+        "mesage": "Student Created Successfully",
+        "Student": student
+    }
