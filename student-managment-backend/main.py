@@ -2,6 +2,7 @@ import json
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -72,3 +73,6 @@ def get_dashboard_data():
         data = json.load(file)
         
     return data
+
+class createStudent(BaseModel):
+    name: str
