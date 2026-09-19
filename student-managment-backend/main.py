@@ -77,6 +77,7 @@ def get_dashboard_data():
     return data
 
 class CreateStudent(BaseModel):
+    id: Optional[int] = None
     name: str = Field(..., min_length=2, example="John Doe")
     course: str = Field(..., example="Computer Science")
     semester: int = Field(..., gt=0, description="Semester must be greater than 0")
@@ -98,3 +99,4 @@ def student_create(student: CreateStudent):
         student_dict = json.loads(student.json())
         students_db.append(student_dict)
         save_student_data(students_db)
+        return {"message": "Student created successfully", "student": student}
