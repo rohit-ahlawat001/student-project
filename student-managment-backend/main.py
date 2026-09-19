@@ -2,9 +2,10 @@ import json
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from datetime import date
-
+from datetime import date, datetime
+from typing import Optional
+from fastapi import FastAPI
+from pydantic import BaseModel, Field
 app = FastAPI()
 
 # Enable CORS for Angular frontend compatibility
@@ -75,19 +76,27 @@ def get_dashboard_data():
         
     return data
 
-class createStudent(BaseModel):
-    name: str
-    course: str
-    semester: int
-    fee_paid_amount: float
-    fee_paid_date: date
-    pending_fee_amount: float = 0.0
+class CreateStudent(BaseModel):
+    name: str = Field(..., min_length=2, example="John Doe")
+    course: str = Field(..., example="Computer Science")
+    semester: int = Field(..., gt=0, description="Semester must be greater than 0")
+    fee_paid_amount: float = Field(..., ge=0.0)
+
+    # FIX: Changed from `date` to `datetime` to handle timestamps like "2026-08-18T10:00:00"
+    fee_paid_date: datetime
+
+    pending_fee_amount: float = Field(default=0.0, ge=0.0)
     next_fee_date: Optional[date] = None
     is_fee_fully_paid: bool = False
 
+
 @app.post("/create_student")
-def studentCreate(student: createStudent):
-    return{
-        "mesage": "Student Created Successfully",
-        "Student": student
-    }
+def student_create(student: CreateStudent):
+    students_db = load_student_data()
+
+    # Convert Pydantic model to a dictionary before appending
+    student_dict = json.loads(student.json())
+    students_db.append(student_dict)
+    save_student_data(students_db)
+
+    
