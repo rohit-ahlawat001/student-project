@@ -119,5 +119,27 @@
         "pending_fee_amount": 25000.0,
         "next_fee_date": "2026-10-08",
         "is_fee_fully_paid": false
+    },
+    {
+        "id": 16,
+        "name": "Shivam ",
+        "course": "MCA",
+        "semester": 1,
+        "fee_paid_amount": 3000.0,
+        "fee_paid_date": "2026-08-05T00:00:00",
+        "pending_fee_amount": 14998.0,
+        "next_fee_date": "2026-10-22",
+        "is_fee_fully_paid": false
+    },
+    {
+        "id": 17,
+        "name": "tejash",
+        "course": "MCA",
+        "semester": 3,
+        "fee_paid_amount": 20000.0,
+        "fee_paid_date": "2026-09-19T00:00:00",
+        "pending_fee_amount": 10000.0,
+        "next_fee_date": "2026-10-28",
+        "is_fee_fully_paid": false
     }
 ]
