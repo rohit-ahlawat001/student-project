@@ -78,7 +78,7 @@ def get_dashboard_data():
 
 class CreateStudent(BaseModel):
     id: Optional[int] = None
-    name: str = Field(..., min_length=2, example="John Doe")
+    name: str = Field(..., min_length=2, example="Rohit Kumar")
     course: str = Field(..., example="Computer Science")
     semester: int = Field(..., gt=0, description="Semester must be greater than 0")
     fee_paid_amount: float = Field(..., ge=0.0)
@@ -109,3 +109,9 @@ def student_create(student: CreateStudent):
     students_db.append(student_dict)
     save_student_data(students_db)
     return {"message": "Student created successfully", "student": student}
+
+class adminCreate(BaseModel):
+    firstName: str = Field(..., min_length=2, example="Rohit")
+    lastName: str = Field(..., min_length=2, example="Kumar")
+    phone: int = Field(..., max_length=10, example="Kumar")
+    email: email

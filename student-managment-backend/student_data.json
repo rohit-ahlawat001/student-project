@@ -141,5 +141,16 @@
         "pending_fee_amount": 10000.0,
         "next_fee_date": "2026-10-28",
         "is_fee_fully_paid": false
+    },
+    {
+        "id": 18,
+        "name": "Rohit ",
+        "course": "MCA",
+        "semester": 3,
+        "fee_paid_amount": 10000.0,
+        "fee_paid_date": "2026-10-21T00:00:00",
+        "pending_fee_amount": 30000.0,
+        "next_fee_date": "2026-11-18",
+        "is_fee_fully_paid": false
     }
 ]
