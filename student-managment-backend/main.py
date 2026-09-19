@@ -93,10 +93,19 @@ class CreateStudent(BaseModel):
 
 @app.post("/create_student")
 def student_create(student: CreateStudent):
-        students_db = load_student_data()
+    students_db = load_student_data()
 
+    student_dict = json.loads(student.json())
     # Pydantic v2: mode='json' date/datetime objects ko string mein convert karta hai
-        student_dict = json.loads(student.json())
-        students_db.append(student_dict)
-        save_student_data(students_db)
-        return {"message": "Student created successfully", "student": student}
+    if students_db:
+        # Get the max ID existing in the file and add 1
+        new_id = max(s.get("id", 0) for s in students_db) + 1
+    else:
+          new_id = 1
+
+    # Insert the generated ID at the start of the dictionary
+    student_dict["id"] = new_id
+        
+    students_db.append(student_dict)
+    save_student_data(students_db)
+    return {"message": "Student created successfully", "student": student}

@@ -107,5 +107,16 @@
         "pending_fee_amount": 0.0,
         "next_fee_date": "2026-09-19",
         "is_fee_fully_paid": false
+    },
+    {
+        "id": 14,
+        "name": "John Doe",
+        "course": "Computer Science",
+        "semester": 1,
+        "fee_paid_amount": 0.0,
+        "fee_paid_date": "2026-09-19T03:49:13.908000Z",
+        "pending_fee_amount": 0.0,
+        "next_fee_date": "2026-09-19",
+        "is_fee_fully_paid": false
     }
 ]
