@@ -2,7 +2,7 @@ import json
 import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from datetime import date, datetime
+from datetime import date
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
@@ -81,10 +81,7 @@ class CreateStudent(BaseModel):
     course: str = Field(..., example="Computer Science")
     semester: int = Field(..., gt=0, description="Semester must be greater than 0")
     fee_paid_amount: float = Field(..., ge=0.0)
-
-    # FIX: Changed from `date` to `datetime` to handle timestamps like "2026-08-18T10:00:00"
-    fee_paid_date: datetime
-
+    fee_paid_date: date
     pending_fee_amount: float = Field(default=0.0, ge=0.0)
     next_fee_date: Optional[date] = None
     is_fee_fully_paid: bool = False
@@ -92,11 +89,9 @@ class CreateStudent(BaseModel):
 
 @app.post("/create_student")
 def student_create(student: CreateStudent):
-    students_db = load_student_data()
+        students_db = load_student_data()
 
-    # Convert Pydantic model to a dictionary before appending
-    student_dict = json.loads(student.json())
-    students_db.append(student_dict)
-    save_student_data(students_db)
-
-    
+    # Pydantic v2: mode='json' date/datetime objects ko string mein convert karta hai
+        student_dict = json.loads(student.json())
+        students_db.append(student_dict)
+        save_student_data(students_db)
