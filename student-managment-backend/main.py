@@ -115,3 +115,7 @@ class adminCreate(BaseModel):
     lastName: str = Field(..., min_length=2, example="Kumar")
     phone: int = Field(..., max_length=10, example="Kumar")
     email: email
+
+@app.post("/aadmin_Create")
+def adminSignup(AdminSignUP: adminCreate):
+    
