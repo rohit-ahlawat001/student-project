@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from datetime import date, datetime
 from typing import Optional
 from fastapi import FastAPI
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 app = FastAPI()
 
 # Enable CORS for Angular frontend compatibility
@@ -19,6 +19,7 @@ app.add_middleware(
 
 JSON_FILE = "student_data.json"
 DASHBOARD_FILE = "dashboard_data.json"
+ADMIN_DATA = "admin_data.json"
 
 # Read or load data from the JSON file
 def load_student_data():
@@ -32,6 +33,21 @@ def save_student_data(data):
     with open(JSON_FILE, "w") as file:
         json.dump(data, file, indent=4)
 
+# Helper: Load data from ANY JSON file
+def load_json(filename):
+    if not os.path.exists(filename):
+        return []
+    with open(filename, "r") as file:
+        try:
+            return json.load(file)
+        except json.JSONDecodeError:
+            return []
+
+
+# Helper: Save data to ANY JSON file
+def save_json(filename, data):
+    with open(filename, "w") as file:
+        json.dump(data, file, indent=4)
 
 # 1. Get List of Students Endpoint
 @app.get("/students_list")
@@ -110,12 +126,38 @@ def student_create(student: CreateStudent):
     save_student_data(students_db)
     return {"message": "Student created successfully", "student": student}
 
-class adminCreate(BaseModel):
+class userAuth(BaseModel):
+    admin_id: Optional[int] = None
     firstName: str = Field(..., min_length=2, example="Rohit")
     lastName: str = Field(..., min_length=2, example="Kumar")
-    phone: int = Field(..., max_length=10, example="Kumar")
-    email: email
+    phone: str = Field(
+        ...,
+        pattern=r"^\d{10}$",
+        example="9876543210",
+        description="Must be a 10-digit number",
+    )
+    email: EmailStr
+    password: str = Field( ..., min_length=6,)
 
 @app.post("/aadmin_Create")
-def adminSignup(AdminSignUP: adminCreate):
+def adminSignup(user: userAuth):
+    users = load_json(ADMIN_DATA)
+    if any(u.get("email") == user.email for u in users):
+        raise HTTPException(status_code=400, detail="Email already registered")
+    if users:
+            # Get the max ID existing in the file and add 1
+            new_id = max(s.get("admin_id", 0) for s in users) + 1
+    else:
+        new_id = 1
     
+        # Insert the generated ID at the start of the dictionary
+    user_dict = user.model_dump(mode="json")
+    user_dict = {"admin_id": new_id, **user_dict}
+    users.append(user.model_dump())
+    save_json(ADMIN_DATA, users)
+
+    return {
+        "message": "User registered successfully",
+        "admin_id": new_id,
+        "user": user_dict,
+    }
