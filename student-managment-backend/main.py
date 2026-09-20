@@ -144,20 +144,34 @@ def adminSignup(user: userAuth):
     users = load_json(ADMIN_DATA)
     if any(u.get("email") == user.email for u in users):
         raise HTTPException(status_code=400, detail="Email already registered")
-    if users:
-            # Get the max ID existing in the file and add 1
-            new_id = max(s.get("admin_id", 0) for s in users) + 1
-    else:
-        new_id = 1
+    # if users:
+    #         # Get the max ID existing in the file and add 1
+    #         new_id = max(s.get("admin_id", 0) for s in users) + 1
+    # else:
+    #     new_id = 1
     
         # Insert the generated ID at the start of the dictionary
     user_dict = user.model_dump(mode="json")
-    user_dict = {"admin_id": new_id, **user_dict}
+    # user_dict = {"admin_id": new_id, **user_dict}
     users.append(user.model_dump())
     save_json(ADMIN_DATA, users)
 
     return {
         "message": "User registered successfully",
-        "admin_id": new_id,
+        # "admin_id": new_id,
         "user": user_dict,
     }
+
+@app.post("/login")
+def login(user: UserAuth):
+    users = load_json(ADMIN_DATA)
+
+    # Check if matching user and password exist in admin_data.json
+    for registered_user in users:
+        if (
+            registered_user["email"] == user.email
+            and registered_user["password"] == user.password
+        ):
+            return {"message": "Login successful"}
+
+    raise HTTPException(status_code=401, detail="Invalid username or password")
