@@ -162,8 +162,13 @@ def adminSignup(user: userAuth):
         "user": user_dict,
     }
 
+class adminLogin(BaseModel):
+     email: EmailStr
+     password: str = Field( ..., min_length=6,)
+
+
 @app.post("/login")
-def login(user: UserAuth):
+def login(user: adminLogin):
     users = load_json(ADMIN_DATA)
 
     # Check if matching user and password exist in admin_data.json
