@@ -181,6 +181,7 @@ def login(user: adminLogin):
 
     raise HTTPException(status_code=401, detail="Invalid username or password")
 
-# Admin Profile details endpoint
-@app.get("/admin_profile")
-def adminProfile():
+# # Admin Profile details endpoint
+# @app.get("/admin_profile")
+# def adminProfile():
+    
