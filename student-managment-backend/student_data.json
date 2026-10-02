@@ -141,5 +141,16 @@
         "pending_fee_amount": 15000.0,
         "next_fee_date": "2026-10-29",
         "is_fee_fully_paid": false
+    },
+    {
+        "id": 19,
+        "name": "Mannat",
+        "course": "MCA",
+        "semester": 4,
+        "fee_paid_amount": 8000.0,
+        "fee_paid_date": "2026-09-27T00:00:00",
+        "pending_fee_amount": 25000.0,
+        "next_fee_date": "2026-11-24",
+        "is_fee_fully_paid": false
     }
 ]
