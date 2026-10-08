@@ -184,3 +184,4 @@ def login(user: adminLogin):
 # # Admin Profile details endpoint
 @app.get("/admin_profile")
 def adminProfile():
+        users = load_json(ADMIN_DATA)
