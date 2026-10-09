@@ -1,10 +1,18 @@
 [
-  {
-    "admin_id": null,
-    "firstName": "Rohit",
-    "lastName": "Kumar",
-    "phone": "3523098349",
-    "email": "rohitadmin@gmail.com",
-    "password": "rohitkumar"
-  }
+    {
+        "admin_id": null,
+        "firstName": "Rohit",
+        "lastName": "Kumar",
+        "phone": "3523098349",
+        "email": "rohitadmin@gmail.com",
+        "password": "rohitkumar"
+    },
+    {
+        "admin_id": null,
+        "firstName": "Mannat",
+        "lastName": "saifi",
+        "phone": "7453453443",
+        "email": "saifi123@gmail.com",
+        "password": "mannatsaifi"
+    }
 ]

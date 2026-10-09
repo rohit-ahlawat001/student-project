@@ -184,8 +184,8 @@ def login(user: adminLogin):
 # # Admin Profile details endpoint
 @app.get("/admin_profile")
 def adminProfile():
-        users = load_json(ADMIN_DATA)
-        if not users:
+        admin_profiles = load_json(ADMIN_DATA)
+        if not admin_profiles:
             raise HTTPException(status_code=404, detail="No admin data found")
         # Assuming only one admin user for simplicity
-        return users[0]    
+        return admin_profiles[0]    
