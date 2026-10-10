@@ -1,16 +1,5 @@
 [
     {
-        "id": 7,
-        "name": "Sneha Patel",
-        "course": "MCA",
-        "semester": 2,
-        "fee_paid_amount": 60000,
-        "fee_paid_date": "2026-07-28T10:05:00",
-        "pending_fee_amount": 0,
-        "next_fee_date": null,
-        "is_fee_fully_paid": true
-    },
-    {
         "id": 8,
         "name": "Rohan Khanna",
         "course": "BTech",
