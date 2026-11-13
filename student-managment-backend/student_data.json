@@ -1,16 +1,5 @@
 [
     {
-        "id": 8,
-        "name": "Rohan Khanna",
-        "course": "BTech",
-        "semester": 8,
-        "fee_paid_amount": 75000,
-        "fee_paid_date": "2026-06-15T12:00:00",
-        "pending_fee_amount": 5000,
-        "next_fee_date": "2026-09-15",
-        "is_fee_fully_paid": false
-    },
-    {
         "id": 9,
         "name": "Anjali Desai",
         "course": "BBA",
